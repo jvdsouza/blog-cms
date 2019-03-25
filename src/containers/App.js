@@ -12,27 +12,22 @@ class App extends Component {
 
   createPost = () => {
     this.setState({route: 'create'})
-    console.log(this.state);
   }
 
   updatePost = () => {
     this.setState({route: 'update'})
-    console.log(this.state);
   }
 
   viewPost = () => {
     this.setState({route: 'view'})
-    console.log(this.state);
   }
 
   deletePost = () => {
     this.setState({route: 'delete'})
-    console.log(this.state);
   }
 
   homeReturn = () => {
     this.setState({route: 'home'})
-    console.log(this.state);
   }
 
   render() {
