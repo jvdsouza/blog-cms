@@ -20,7 +20,7 @@ class CreatePost extends Component {
     }
 
     onSubmitPost = () => {
-        fetch('http://localhost:3001/admincreate', {
+        fetch(`${process.env.REACT_APP_APISITE}/admincreate`, {
             method: 'post',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
