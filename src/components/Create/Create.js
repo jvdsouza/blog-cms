@@ -25,7 +25,8 @@ class CreatePost extends Component {
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
                 title: this.state.title,
-                body: this.state.body
+                body: this.state.body,
+                apiKey: process.env.REACT_APP_APIKEY
             })
         })
             .then(response => {
