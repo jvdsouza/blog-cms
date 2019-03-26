@@ -6,7 +6,10 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      route: 'home'
+      route: 'home',
+      signedIn: false,
+      username: '',
+      password: ''
     }
   }
 
@@ -30,15 +33,62 @@ class App extends Component {
     this.setState({route: 'home'})
   }
 
+  onUsernameChange = (event) => {
+    this.setState({username: event.target.value})
+  }
+
+  onPasswordChange = (event) => {
+    this.setState({password: event.target.value})
+  }
+
+  onSignin = () => {
+    return fetch(`${process.env.REACT_APP_APISITE}/authenticate`, {
+      method: 'post',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        username: this.state.username,
+        password: this.state.password
+      })
+    })
+      .then(response => {
+        return response.json();
+      })
+      .then(authenticated => {
+        if(authenticated === 'success'){
+          this.setState({signedIn: true})
+        }
+      })
+  }
+
   render() {
-    return (
+    return !this.state.signedIn ?
+    (
+      <div>
+        <h1>please log in to continue</h1>
+        <input 
+          type='text' 
+          placeholder='Username' 
+          onChange={this.onUsernameChange} 
+          style={{margin: '10px', marginLeft: '0px'}}
+        />
+        <input 
+          type='password' 
+          placeholder='Password' 
+          onChange={this.onPasswordChange} 
+          style={{margin: '10px', marginLeft: '0px'}}
+        />
+        <button onClick={this.onSignin}>Sign in</button>
+      </div>
+    )
+    :
+    (
       <div>
         <h1>hi</h1>
         {this.state.route === 'home' ? 
           <div>
             <button onClick={this.createPost}>Create Post</button>
-            <button onClick={this.updatePost}>Update Post</button>
             <button onClick={this.viewPost}>View Post</button>
+            <button onClick={this.updatePost}>Update Post</button>
             <button onClick={this.deletePost}>Delete Post</button>
           </div>
         :

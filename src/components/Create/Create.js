@@ -45,9 +45,19 @@ class CreatePost extends Component {
             <div>
                 {this.state.status !== 'success' ?
                     <div>
-                        <input type='text' placeholder='Title' onChange={this.onTitleChange} style={{margin: '10px', marginLeft: '0px'}}/>
+                        <input 
+                            type='text' 
+                            placeholder='Title' 
+                            onChange={this.onTitleChange} 
+                            style={{margin: '10px', marginLeft: '0px'}}
+                        />
                         <br/>
-                        <textarea onChange={this.onBodyChange} placeholder="Blog Post" cols='100' rows='20'/>
+                        <textarea 
+                            onChange={this.onBodyChange} 
+                            placeholder="Blog Post" 
+                            cols='100' 
+                            rows='20'
+                        />
                         <br/>
                         <button onClick={this.onSubmitPost}>Post to Blog</button>
                     </div>
