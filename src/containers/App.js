@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import CreatePost from '../components/Create/Create';
+import EmbedPost from '../components/Embed/Embed';
+import DeletePost from '../components/Delete/Delete'
 import './App.css';
 
 class App extends Component {
@@ -87,7 +89,7 @@ class App extends Component {
         {this.state.route === 'home' ? 
           <div>
             <button onClick={this.createPost}>Create Post</button>
-            <button onClick={this.viewPost}>View Post</button>
+            <button onClick={this.viewPost}>View Posts</button>
             <button onClick={this.updatePost}>Update Post</button>
             <button onClick={this.deletePost}>Delete Post</button>
           </div>
@@ -95,6 +97,23 @@ class App extends Component {
         this.state.route === 'create' ? 
           <div>
             <CreatePost/>
+            <button onClick={this.homeReturn}>go back</button>
+          </div>
+        :
+        this.state.route === 'view' ?
+          <div>
+            <EmbedPost/>
+            <button onClick={this.homeReturn}>go back</button>
+          </div>
+        :
+        this.state.route === 'update' ?
+        <div>
+          <h1>welcome to the update post screen</h1>
+        </div>
+        :
+        this.state.route === 'delete' ?
+          <div>
+            <DeletePost/>
             <button onClick={this.homeReturn}>go back</button>
           </div>
         :
