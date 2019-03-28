@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import CreatePost from '../components/Create/Create';
 import EmbedPost from '../components/Embed/Embed';
-import DeletePost from '../components/Delete/Delete'
+import UpdatePost from '../components/Update/Update';
+import DeletePost from '../components/Delete/Delete';
 import './App.css';
 
 class App extends Component {
@@ -9,7 +10,7 @@ class App extends Component {
     super();
     this.state = {
       route: 'home',
-      signedIn: false,
+      signedIn: true,
       username: '',
       password: ''
     }
@@ -108,7 +109,8 @@ class App extends Component {
         :
         this.state.route === 'update' ?
         <div>
-          <h1>welcome to the update post screen</h1>
+          <UpdatePost/>
+          <button onClick={this.homeReturn}>go back</button>
         </div>
         :
         this.state.route === 'delete' ?
