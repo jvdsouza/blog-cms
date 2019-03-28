@@ -10,7 +10,7 @@ class App extends Component {
     super();
     this.state = {
       route: 'home',
-      signedIn: true,
+      signedIn: false,
       username: '',
       password: ''
     }
