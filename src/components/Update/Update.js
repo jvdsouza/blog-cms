@@ -92,6 +92,12 @@ class UpdatePost extends Component {
         (
             <div>
                 <h2>udpating: {this.state.title}</h2>
+                <input 
+                    type='text' 
+                    onChange={this.onTitleChange} 
+                    placeholder='Title' 
+                    style={{margin: '10px', marginLeft: '0px'}}
+                />
                 <textarea 
                     onChange={this.onBodyChange} 
                     placeholder="Blog Post" 
